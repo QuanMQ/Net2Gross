@@ -1,13 +1,16 @@
 import { StyleSheet, View } from "react-native";
 import Header from "./components/Header";
 import NetOrGrossSection from "./components/NetOrGrossSection";
+import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header />
-      <NetOrGrossSection />
-    </View>
+    <GlobalProvider>
+      <View style={styles.container}>
+        <Header />
+        <NetOrGrossSection />
+      </View>
+    </GlobalProvider>
   );
 }
 

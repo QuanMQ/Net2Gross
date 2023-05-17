@@ -1,8 +1,13 @@
 import { StyleSheet, Pressable, Text, View } from "react-native";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 function NetOrGrossSection() {
   const [salary, setSalary] = useState("net");
+  const { netOrGrossSelect } = useContext(GlobalContext);
+  useEffect(() => {
+    netOrGrossSelect(salary);
+  }, [salary]);
 
   return (
     <View style={styles.innerContainer}>
