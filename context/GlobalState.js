@@ -6,6 +6,7 @@ const initialState = {
   netOrGross: "net",
   salaryInput: 0,
   currency: "vnd",
+  exchangeRate: 23300,
   dependents: 0,
   insurance: "full",
   insuranceInput: 0,

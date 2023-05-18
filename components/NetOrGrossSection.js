@@ -10,7 +10,6 @@ function NetOrGrossSection() {
   }, [salary]);
 
   return (
-    <View style={styles.innerContainer}>
       <View style={styles.netOrGrossSection}>
         <Pressable
           onPress={() => {
@@ -29,7 +28,7 @@ function NetOrGrossSection() {
                 : styles.netOrGrossText
             }
           >
-            Net -{">"} Gross
+            Net &rarr; Gross
           </Text>
         </Pressable>
         <Pressable
@@ -49,22 +48,14 @@ function NetOrGrossSection() {
                 : styles.netOrGrossText
             }
           >
-            Gross -{">"} Net
+            Gross &rarr; Net
           </Text>
         </Pressable>
       </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  innerContainer: {
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    width: "90%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   netOrGrossSection: {
     flexDirection: "row",
     width: "90%",

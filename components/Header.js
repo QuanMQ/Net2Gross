@@ -1,31 +1,32 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Header = ({ title }) => {
+const Header = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>
+        NET <Text style={styles.symbol}>&#x21CC;</Text> GROSS
+      </Text>
     </View>
   );
-};
-
-Header.defaultProps = {
-  title: "NET 2 GROSS",
 };
 
 const styles = StyleSheet.create({
   header: {
     height: 60,
     width: "100%",
-    padding: 12,
+    paddingVertical: 5,
     backgroundColor: "#003ba7",
     position: "absolute",
     top: 25,
   },
   text: {
-    color: "yellow",
+    color: "white",
     fontSize: 23,
     textAlign: "center",
+  },
+  symbol: {
+    fontSize: 30,
   },
 });
 
