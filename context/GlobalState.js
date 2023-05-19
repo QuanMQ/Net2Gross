@@ -28,10 +28,17 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function addTransaction(transaction) {
+  function currencySelect(cur) {
     dispatch({
-      type: "ADD_TRANSACTION",
-      payload: transaction,
+      type: "CURRENCY_SELECT",
+      payload: cur,
+    });
+  }
+
+  function salarySet(salary) {
+    dispatch({
+      type: "SALARY_SET",
+      payload: salary,
     });
   }
 
@@ -40,6 +47,8 @@ export const GlobalProvider = ({ children }) => {
       value={{
         state,
         netOrGrossSelect,
+        currencySelect,
+        salarySet
       }}
     >
       {children}

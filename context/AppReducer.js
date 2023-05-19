@@ -5,10 +5,15 @@ const AppReducer = (state, action) => {
         ...state,
         netOrGross: action.payload,
       };
-    case "ADD_TRANSACTION":
+    case "CURRENCY_SELECT":
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions],
+        currency: action.payload,
+      };
+    case "SALARY_SET":
+      return {
+        ...state,
+        salaryInput: action.payload,
       };
     default:
       return state;
