@@ -15,6 +15,11 @@ const AppReducer = (state, action) => {
         ...state,
         salaryInput: action.payload,
       };
+    case "EXCHANGE_RATE_SET":
+      return {
+        ...state,
+        exchangeRate: action.payload,
+      };
     default:
       return state;
   }

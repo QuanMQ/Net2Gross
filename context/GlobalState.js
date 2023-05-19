@@ -42,13 +42,21 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function exchangeRateSet(rate) {
+    dispatch({
+      type: "EXCHANGE_RATE_SET",
+      payload: rate,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         state,
         netOrGrossSelect,
         currencySelect,
-        salarySet
+        salarySet,
+        exchangeRateSet,
       }}
     >
       {children}

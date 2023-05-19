@@ -8,7 +8,31 @@ import {
   TextInput,
 } from "react-native";
 import { useState, useContext, useEffect } from "react";
+import ExchangeRateSection from "./ExchangeRateSection";
 import { GlobalContext } from "../context/GlobalState";
+
+export function insertComma(numStr) {
+  if (numStr && numStr.length > 3) {
+    const numArr = numStr
+      .split("")
+      .filter((num) => num !== ",")
+      .reverse();
+    const newArr = [];
+    let counter = 0;
+    numArr.forEach((digit, index, arr) => {
+      counter++;
+      newArr.push(digit);
+      if (counter === 3 && arr[index + 1]) {
+        newArr.push(",");
+        counter = 0;
+      }
+    });
+    const result = newArr.reverse().join("");
+    return result;
+  } else {
+    return numStr;
+  }
+}
 
 function SalaryInputSection() {
   const [salary, setSalary] = useState("");
@@ -26,29 +50,6 @@ function SalaryInputSection() {
   useEffect(() => {
     salarySet(parseInt(salary));
   }, [salary]);
-
-  function insertComma(numStr) {
-    if (numStr && numStr.length > 3) {
-      const numArr = numStr
-        .split("")
-        .filter((num) => num !== ",")
-        .reverse();
-      const newArr = [];
-      let counter = 0;
-      numArr.forEach((digit, index, arr) => {
-        counter++;
-        newArr.push(digit);
-        if (counter === 3 && arr[index + 1]) {
-          newArr.push(",");
-          counter = 0;
-        }
-      });
-      const result = newArr.reverse().join("");
-      return result;
-    } else {
-      return numStr;
-    }
-  }
 
   return (
     <View style={{ width: "90%" }}>
@@ -71,8 +72,7 @@ function SalaryInputSection() {
           <TextInput
             value={insertComma(salary)}
             onChangeText={(text) => {
-              const regex =
-                /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*/g;
+              const regex = /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*/g;
               regex.test(text)
                 ? setSalary(text)
                 : setSalary((prev) => (text === "" ? "" : prev));
@@ -125,6 +125,8 @@ function SalaryInputSection() {
           </Pressable>
         </View>
       </View>
+      {currencyInput === "usd" && <ExchangeRateSection />}
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
   salarySection: {
     flexDirection: "row",
     height: 50,
-    marginBottom: 15,
+    marginBottom: 10,
     padding: 5,
     columnGap: 10,
   },
@@ -259,4 +261,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
+
 export default SalaryInputSection;
