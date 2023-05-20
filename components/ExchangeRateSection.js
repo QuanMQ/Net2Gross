@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, SafeAreaView } from "react-native";
 import { useState, useContext, useEffect } from "react";
-import { insertComma } from "./SalaryInputSection";
+import { insertComma } from "../helpers/helperFunctions";
 import { GlobalContext } from "../context/GlobalState";
 
 function ExchangeRateSection() {
@@ -11,7 +11,7 @@ function ExchangeRateSection() {
   }, [exchangeRateInput]);
 
   return (
-    <View>
+    <View style={{ marginTop: 10 }}>
       <View style={styles.titleRow}>
         <Text style={styles.title}>Exchange Rate</Text>
         <Text style={styles.title}>1 USD =</Text>
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
   titleRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 5,
   },
   title: {
     fontSize: 20,
@@ -50,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 18,
+    marginTop: 5,
   },
 });
 

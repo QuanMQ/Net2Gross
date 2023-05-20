@@ -9,30 +9,8 @@ import {
 } from "react-native";
 import { useState, useContext, useEffect } from "react";
 import ExchangeRateSection from "./ExchangeRateSection";
+import { insertComma } from "../helpers/helperFunctions";
 import { GlobalContext } from "../context/GlobalState";
-
-export function insertComma(numStr) {
-  if (numStr && numStr.length > 3) {
-    const numArr = numStr
-      .split("")
-      .filter((num) => num !== ",")
-      .reverse();
-    const newArr = [];
-    let counter = 0;
-    numArr.forEach((digit, index, arr) => {
-      counter++;
-      newArr.push(digit);
-      if (counter === 3 && arr[index + 1]) {
-        newArr.push(",");
-        counter = 0;
-      }
-    });
-    const result = newArr.reverse().join("");
-    return result;
-  } else {
-    return numStr;
-  }
-}
 
 function SalaryInputSection() {
   const [salary, setSalary] = useState("");
@@ -52,7 +30,7 @@ function SalaryInputSection() {
   }, [salary]);
 
   return (
-    <View style={{ width: "90%" }}>
+    <View style={{ marginTop: 10, width: "90%" }}>
       <View style={{ flexDirection: "row" }}>
         <Text style={{ fontSize: 20 }}>
           {netOrGross.replace(netOrGross[0], netOrGross[0].toUpperCase())}{" "}
@@ -183,9 +161,7 @@ function SalaryInputSection() {
 const styles = StyleSheet.create({
   salarySection: {
     flexDirection: "row",
-    height: 50,
-    marginBottom: 10,
-    padding: 5,
+    marginTop: 5,
     columnGap: 10,
   },
   centeredView: {
