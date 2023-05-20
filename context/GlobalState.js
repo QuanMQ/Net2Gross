@@ -49,6 +49,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function dependentsSet(dependentsNum) {
+    dispatch({
+      type: "DEPENDENTS_SET",
+      payload: dependentsNum,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -57,6 +64,7 @@ export const GlobalProvider = ({ children }) => {
         currencySelect,
         salarySet,
         exchangeRateSet,
+        dependentsSet,
       }}
     >
       {children}

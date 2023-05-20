@@ -20,6 +20,11 @@ const AppReducer = (state, action) => {
         ...state,
         exchangeRate: action.payload,
       };
+    case "DEPENDENTS_SET":
+      return {
+        ...state,
+        dependents: action.payload,
+      };
     default:
       return state;
   }

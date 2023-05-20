@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import Header from "./components/Header";
 import NetOrGrossSection from "./components/NetOrGrossSection";
 import SalaryInputSection from "./components/SalaryInputSection";
+import DependentsSection from "./components/DependentsSection";
 import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
         <View style={styles.innerContainer}>
           <NetOrGrossSection />
           <SalaryInputSection />
+          <DependentsSection />
         </View>
       </View>
     </GlobalProvider>
