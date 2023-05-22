@@ -5,13 +5,16 @@ import { GlobalContext } from "../context/GlobalState";
 
 function ExchangeRateSection() {
   const [exchangeRateInput, setExchangeRateInput] = useState("23300");
+  const [focus, setFocus] = useState(false);
   const { exchangeRateSet } = useContext(GlobalContext);
   useEffect(() => {
-    exchangeRateSet(parseInt(exchangeRateInput));
+    exchangeRateInput
+      ? exchangeRateSet(parseInt(exchangeRateInput))
+      : exchangeRateSet(23300);
   }, [exchangeRateInput]);
 
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={{ marginTop: 15 }}>
       <View style={styles.titleRow}>
         <Text style={styles.title}>Exchange Rate</Text>
         <Text style={styles.title}>1 USD =</Text>
@@ -20,14 +23,20 @@ function ExchangeRateSection() {
         <TextInput
           value={insertComma(exchangeRateInput)}
           textAlign="right"
+          onFocus={() => {
+            setFocus(true);
+          }}
+          onBlur={() => {
+            setFocus(false);
+          }}
           onChangeText={(text) => {
             const regex = /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*/g;
             regex.test(text)
               ? setExchangeRateInput(text)
-              : setExchangeRateInput((prev) => (text === "" ? "23300" : prev));
+              : setExchangeRateInput((prev) => (text === "" ? "" : prev));
           }}
           keyboardType="number-pad"
-          style={styles.input}
+          style={[styles.input, focus && styles.inputFocused]}
         />
       </SafeAreaView>
     </View>
@@ -50,6 +59,9 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     marginTop: 5,
+  },
+  inputFocused: {
+    borderColor: "#00b14f",
   },
 });
 

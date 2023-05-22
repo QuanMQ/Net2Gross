@@ -10,48 +10,44 @@ function NetOrGrossSection() {
   }, [salary]);
 
   return (
-      <View style={styles.netOrGrossSection}>
-        <Pressable
-          onPress={() => {
-            setSalary("net");
-          }}
-          style={
-            salary === "net"
-              ? styles.netOrGrossButtonSelected
-              : styles.netOrGrossButton
-          }
+    <View style={styles.netOrGrossSection}>
+      <Pressable
+        onPress={() => {
+          setSalary("net");
+        }}
+        style={[
+          styles.netOrGrossButton,
+          salary === "net" && styles.netOrGrossButtonSelected,
+        ]}
+      >
+        <Text
+          style={[
+            styles.netOrGrossText,
+            salary === "net" && styles.netOrGrossTextSelected,
+          ]}
         >
-          <Text
-            style={
-              salary === "net"
-                ? styles.netOrGrossTextSelected
-                : styles.netOrGrossText
-            }
-          >
-            Net &rarr; Gross
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            setSalary("gross");
-          }}
-          style={
-            salary === "gross"
-              ? styles.netOrGrossButtonSelected
-              : styles.netOrGrossButton
-          }
+          Net &rarr; Gross
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => {
+          setSalary("gross");
+        }}
+        style={[
+          styles.netOrGrossButton,
+          salary === "gross" && styles.netOrGrossButtonSelected,
+        ]}
+      >
+        <Text
+          style={[
+            styles.netOrGrossText,
+            salary === "gross" && styles.netOrGrossTextSelected,
+          ]}
         >
-          <Text
-            style={
-              salary === "gross"
-                ? styles.netOrGrossTextSelected
-                : styles.netOrGrossText
-            }
-          >
-            Gross &rarr; Net
-          </Text>
-        </Pressable>
-      </View>
+          Gross &rarr; Net
+        </Text>
+      </Pressable>
+    </View>
   );
 }
 
@@ -75,18 +71,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   netOrGrossButtonSelected: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#e5f7ed",
-    borderRadius: 5,
   },
   netOrGrossText: {
     fontSize: 20,
   },
   netOrGrossTextSelected: {
     color: "#00b14f",
-    fontSize: 20,
   },
 });
 

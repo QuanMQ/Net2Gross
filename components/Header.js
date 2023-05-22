@@ -13,12 +13,14 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    height: 60,
+    height: 75,
     width: "100%",
-    paddingVertical: 5,
+    paddingTop: 26,
+    paddingBottom: 5,
     backgroundColor: "#003ba7",
     position: "absolute",
-    top: 25,
+    top: 0,
+    zIndex: 10,
   },
   text: {
     color: "white",

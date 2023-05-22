@@ -12,12 +12,24 @@ import ExchangeRateSection from "./ExchangeRateSection";
 import { insertComma } from "../helpers/helperFunctions";
 import { GlobalContext } from "../context/GlobalState";
 
+const modalText = {
+  net: {
+    title: "NET SALARY",
+    content:
+      "Net salary is the salary for each pay period that you can take home.",
+  },
+  gross: {
+    title: "GROSS SALARY",
+    content:
+      "Gross salary is your total salary that the company pays each pay period. Including taxes and insurance.",
+  },
+};
+
 function SalaryInputSection() {
   const [salary, setSalary] = useState("");
   const [focus, setFocus] = useState(false);
   const [currencyInput, setCurrencyInput] = useState("vnd");
-  const [netModalVisible, setNetModalVisible] = useState(false);
-  const [grossModalVisible, setGrossModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const {
     state: { netOrGross },
     currencySelect,
@@ -27,11 +39,11 @@ function SalaryInputSection() {
     currencySelect(currencyInput);
   }, [currencyInput]);
   useEffect(() => {
-    salarySet(parseInt(salary));
+    salary ? salarySet(parseInt(salary)) : salarySet(0);
   }, [salary]);
 
   return (
-    <View style={{ marginTop: 10, width: "90%" }}>
+    <View style={{ marginTop: 15, width: "90%" }}>
       <View style={{ flexDirection: "row" }}>
         <Text style={{ fontSize: 20 }}>
           {netOrGross.replace(netOrGross[0], netOrGross[0].toUpperCase())}{" "}
@@ -39,8 +51,7 @@ function SalaryInputSection() {
         </Text>
         <Pressable
           onPress={() => {
-            netOrGross === "net" && setNetModalVisible(true);
-            netOrGross === "gross" && setGrossModalVisible(true);
+            setModalVisible(true);
           }}
         >
           <Text style={{ fontSize: 17 }}>&#x2753;</Text>
@@ -72,18 +83,16 @@ function SalaryInputSection() {
             onPress={() => {
               setCurrencyInput("vnd");
             }}
-            style={
-              currencyInput === "vnd"
-                ? styles.currencyButtonSelected
-                : styles.currencyButton
-            }
+            style={[
+              styles.currencyButton,
+              currencyInput === "vnd" && styles.currencyButtonSelected,
+            ]}
           >
             <Text
-              style={
-                currencyInput === "vnd"
-                  ? styles.currencyTextSelected
-                  : styles.currencyText
-              }
+              style={[
+                styles.currencyText,
+                currencyInput === "vnd" && styles.currencyTextSelected,
+              ]}
             >
               VND
             </Text>
@@ -92,18 +101,16 @@ function SalaryInputSection() {
             onPress={() => {
               setCurrencyInput("usd");
             }}
-            style={
-              currencyInput === "usd"
-                ? styles.currencyButtonSelected
-                : styles.currencyButton
-            }
+            style={[
+              styles.currencyButton,
+              currencyInput === "usd" && styles.currencyButtonSelected,
+            ]}
           >
             <Text
-              style={
-                currencyInput === "usd"
-                  ? styles.currencyTextSelected
-                  : styles.currencyText
-              }
+              style={[
+                styles.currencyText,
+                currencyInput === "usd" && styles.currencyTextSelected,
+              ]}
             >
               USD
             </Text>
@@ -115,46 +122,20 @@ function SalaryInputSection() {
       <Modal
         animationType="slide"
         transparent={true}
-        visible={netModalVisible}
+        visible={modalVisible}
         onRequestClose={() => {
-          setNetModalVisible(!netModalVisible);
+          setModalVisible(!modalVisible);
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalTitle}>NET SALARY</Text>
+            <Text style={styles.modalTitle}>{modalText[netOrGross].title}</Text>
             <Text style={styles.modalText}>
-              Net salary is the salary for each pay period that you can take
-              home.
+              {modalText[netOrGross].content}
             </Text>
             <Pressable
               style={styles.buttonClose}
-              onPress={() => setNetModalVisible(!netModalVisible)}
-            >
-              <Text style={styles.buttonCloseIcon}>&#x2715;</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={grossModalVisible}
-        onRequestClose={() => {
-          setGrossModalVisible(!grossModalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalTitle}>GROSS SALARY</Text>
-            <Text style={styles.modalText}>
-              Gross salary is your total salary that the company pays each pay
-              period. Including taxes and insurance.
-            </Text>
-            <Pressable
-              style={styles.buttonClose}
-              onPress={() => setGrossModalVisible(!grossModalVisible)}
+              onPress={() => setModalVisible(!modalVisible)}
             >
               <Text style={styles.buttonCloseIcon}>&#x2715;</Text>
             </Pressable>
@@ -233,18 +214,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   currencyButtonSelected: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#e5f7ed",
-    borderRadius: 5,
   },
   currencyText: {
     fontSize: 20,
   },
   currencyTextSelected: {
     color: "#00b14f",
-    fontSize: 20,
   },
 });
 

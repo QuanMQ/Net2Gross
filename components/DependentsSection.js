@@ -31,7 +31,7 @@ function DependentsSection() {
   }, [minusPlus]);
 
   return (
-    <View style={{ marginTop: 10, width: "90%" }}>
+    <View style={{ marginTop: 15, width: "90%" }}>
       <View style={styles.flexBox}>
         <Text style={{ fontSize: 20 }}>Number of dependents</Text>
         <Pressable onPress={() => setDependentsModalVisible(true)}>
