@@ -14,6 +14,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 function SalaryInputSection() {
   const [salary, setSalary] = useState("");
+  const [focus, setFocus] = useState(false);
   const [currencyInput, setCurrencyInput] = useState("vnd");
   const [netModalVisible, setNetModalVisible] = useState(false);
   const [grossModalVisible, setGrossModalVisible] = useState(false);
@@ -49,6 +50,12 @@ function SalaryInputSection() {
         <SafeAreaView style={{ flex: 1.5 }}>
           <TextInput
             value={insertComma(salary)}
+            onFocus={() => {
+              setFocus(true);
+            }}
+            onBlur={() => {
+              setFocus(false);
+            }}
             onChangeText={(text) => {
               const regex = /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*/g;
               regex.test(text)
@@ -57,7 +64,7 @@ function SalaryInputSection() {
             }}
             keyboardType="number-pad"
             placeholder="Input salary"
-            style={styles.input}
+            style={[styles.input, focus && styles.inputFocused]}
           />
         </SafeAreaView>
         <View style={styles.currency}>
@@ -205,6 +212,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 18,
+  },
+  inputFocused: {
+    borderColor: "#00b14f",
   },
   currency: {
     flex: 1,

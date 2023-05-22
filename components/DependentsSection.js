@@ -13,6 +13,7 @@ import { GlobalContext } from "../context/GlobalState";
 function DependentsSection() {
   const [dependentsInput, setDependentsInput] = useState("");
   const [minusPlus, setMinusPlus] = useState("");
+  const [focus, setFocus] = useState(false);
   const [dependentsModalVisible, setDependentsModalVisible] = useState(false);
   const { dependentsSet } = useContext(GlobalContext);
   useEffect(() => {
@@ -68,6 +69,12 @@ function DependentsSection() {
         <SafeAreaView style={{ width: "50%" }}>
           <TextInput
             value={dependentsInput}
+            onFocus={() => {
+              setFocus(true);
+            }}
+            onBlur={() => {
+              setFocus(false);
+            }}
             onChangeText={(dependentsStr) => {
               const regex = /^[1-9][0-9]?$/;
               const dependentsNum = parseInt(dependentsStr);
@@ -80,7 +87,7 @@ function DependentsSection() {
             keyboardType="number-pad"
             placeholder="0"
             placeholderTextColor={"#000"}
-            style={styles.input}
+            style={[styles.input, focus && styles.inputFocused]}
             textAlign="center"
           />
         </SafeAreaView>
@@ -164,6 +171,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 18,
+  },
+  inputFocused: {
+    borderColor: "#00b14f",
   },
   button: {
     borderColor: "#d9d9d9",
