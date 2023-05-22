@@ -25,6 +25,16 @@ const AppReducer = (state, action) => {
         ...state,
         dependents: action.payload,
       };
+    case "INSURANCE_SELECT":
+      return {
+        ...state,
+        insurance: action.payload,
+      };
+    case "INSURANCE_SET":
+      return {
+        ...state,
+        insuranceInput: action.payload,
+      };
     default:
       return state;
   }

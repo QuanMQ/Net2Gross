@@ -4,13 +4,13 @@ import { insertComma } from "../helpers/helperFunctions";
 import { GlobalContext } from "../context/GlobalState";
 
 function ExchangeRateSection() {
-  const [exchangeRateInput, setExchangeRateInput] = useState("23300");
+  const [exchangeRateInput, setExchangeRateInput] = useState("23400");
   const [focus, setFocus] = useState(false);
   const { exchangeRateSet } = useContext(GlobalContext);
   useEffect(() => {
     exchangeRateInput
       ? exchangeRateSet(parseInt(exchangeRateInput))
-      : exchangeRateSet(23300);
+      : exchangeRateSet(23400);
   }, [exchangeRateInput]);
 
   return (

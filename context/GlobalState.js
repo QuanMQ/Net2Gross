@@ -56,6 +56,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function insuranceSelect(option) {
+    dispatch({
+      type: "INSURANCE_SELECT",
+      payload: option,
+    });
+  }
+
+  function insuranceSet(amount) {
+    dispatch({
+      type: "INSURANCE_SET",
+      payload: amount,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -65,6 +79,8 @@ export const GlobalProvider = ({ children }) => {
         salarySet,
         exchangeRateSet,
         dependentsSet,
+        insuranceSelect,
+        insuranceSet,
       }}
     >
       {children}

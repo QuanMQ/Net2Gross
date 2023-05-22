@@ -1,8 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView, SafeAreaView } from "react-native";
 import Header from "./components/Header";
 import NetOrGrossSection from "./components/NetOrGrossSection";
 import SalaryInputSection from "./components/SalaryInputSection";
 import DependentsSection from "./components/DependentsSection";
+import InsuranceSection from "./components/InsuranceSection";
 import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
@@ -10,11 +11,16 @@ export default function App() {
     <GlobalProvider>
       <View style={styles.container}>
         <Header />
-        <View style={styles.innerContainer}>
-          <NetOrGrossSection />
-          <SalaryInputSection />
-          <DependentsSection />
-        </View>
+        <SafeAreaView style={{ width: "90%" }}>
+          <ScrollView>
+            <View style={styles.innerContainer}>
+              <NetOrGrossSection />
+              <SalaryInputSection />
+              <DependentsSection />
+              <InsuranceSection />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </View>
     </GlobalProvider>
   );
@@ -25,13 +31,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#00b14f",
     alignItems: "center",
-    justifyContent: "center",
     position: "relative",
   },
   innerContainer: {
     backgroundColor: "#fff",
     borderRadius: 5,
-    width: "90%",
+    marginTop: 105,
     alignItems: "center",
     justifyContent: "center",
   },
