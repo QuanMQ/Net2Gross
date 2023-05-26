@@ -6,7 +6,7 @@ const initialState = {
   netOrGross: "net",
   salaryInput: 0,
   currency: "vnd",
-  exchangeRate: 23300,
+  exchangeRate: 23400,
   dependents: 0,
   insurance: "full",
   insuranceInput: 0,
@@ -70,6 +70,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function regionSelect(region) {
+    dispatch({
+      type: "REGION_SELECT",
+      payload: region,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -81,6 +88,7 @@ export const GlobalProvider = ({ children }) => {
         dependentsSet,
         insuranceSelect,
         insuranceSet,
+        regionSelect,
       }}
     >
       {children}

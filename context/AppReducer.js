@@ -35,6 +35,11 @@ const AppReducer = (state, action) => {
         ...state,
         insuranceInput: action.payload,
       };
+    case "REGION_SELECT":
+      return {
+        ...state,
+        region: action.payload,
+      };
     default:
       return state;
   }

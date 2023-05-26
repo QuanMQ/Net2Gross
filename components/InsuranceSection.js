@@ -71,7 +71,7 @@ function InsuranceSection() {
             setInputFocus(false);
           }}
           onChangeText={(text) => {
-            const regex = /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*/g;
+            const regex = /^[^0a-zA-Z]*[1-9][0-9]{0,2},?([0-9]{0,3},?)*$/g;
             regex.test(text)
               ? setInsuranceInput(text)
               : setInsuranceInput((prev) => (text === "" ? "" : prev));

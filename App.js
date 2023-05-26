@@ -1,27 +1,32 @@
 import { StyleSheet, View, ScrollView, SafeAreaView } from "react-native";
+import { AutocompleteDropdownContextProvider } from "react-native-autocomplete-dropdown";
 import Header from "./components/Header";
 import NetOrGrossSection from "./components/NetOrGrossSection";
 import SalaryInputSection from "./components/SalaryInputSection";
 import DependentsSection from "./components/DependentsSection";
 import InsuranceSection from "./components/InsuranceSection";
+import RegionSection from "./components/RegionSection";
 import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
   return (
     <GlobalProvider>
-      <View style={styles.container}>
-        <Header />
-        <SafeAreaView style={{ width: "90%" }}>
-          <ScrollView>
-            <View style={styles.innerContainer}>
-              <NetOrGrossSection />
-              <SalaryInputSection />
-              <DependentsSection />
-              <InsuranceSection />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </View>
+      <AutocompleteDropdownContextProvider>
+        <View style={styles.container}>
+          <Header />
+          <SafeAreaView style={{ width: "90%" }}>
+            <ScrollView>
+              <View style={styles.innerContainer}>
+                <NetOrGrossSection />
+                <SalaryInputSection />
+                <DependentsSection />
+                <InsuranceSection />
+                <RegionSection />
+              </View>
+            </ScrollView>
+          </SafeAreaView>
+        </View>
+      </AutocompleteDropdownContextProvider>
     </GlobalProvider>
   );
 }
