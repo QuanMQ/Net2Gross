@@ -9,7 +9,7 @@ function ExchangeRateSection() {
   const { exchangeRateSet } = useContext(GlobalContext);
   useEffect(() => {
     exchangeRateInput
-      ? exchangeRateSet(parseInt(exchangeRateInput))
+      ? exchangeRateSet(parseInt(exchangeRateInput.replace(/,/g, "")))
       : exchangeRateSet(23400);
   }, [exchangeRateInput]);
 

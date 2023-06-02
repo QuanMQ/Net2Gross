@@ -39,7 +39,7 @@ function SalaryInputSection() {
     currencySelect(currencyInput);
   }, [currencyInput]);
   useEffect(() => {
-    salary ? salarySet(parseInt(salary)) : salarySet(0);
+    salary ? salarySet(parseInt(salary.replace(/,/g, ""))) : salarySet(0);
   }, [salary]);
 
   return (
@@ -53,6 +53,7 @@ function SalaryInputSection() {
           onPress={() => {
             setModalVisible(true);
           }}
+          hitSlop={10}
         >
           <Text style={{ fontSize: 17 }}>&#x2753;</Text>
         </Pressable>
@@ -136,6 +137,7 @@ function SalaryInputSection() {
             <Pressable
               style={styles.buttonClose}
               onPress={() => setModalVisible(!modalVisible)}
+              hitSlop={10}
             >
               <Text style={styles.buttonCloseIcon}>&#x2715;</Text>
             </Pressable>
@@ -155,13 +157,11 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "center",
     position: "relative",
     backgroundColor: "rgba(0, 0, 0, 0.35)",
   },
   modalView: {
     height: "25%",
-    width: "100%",
     padding: 15,
     backgroundColor: "white",
     borderTopRightRadius: 20,

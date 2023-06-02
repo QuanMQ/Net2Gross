@@ -14,7 +14,9 @@ function InsuranceSection() {
     insuranceSelect(selectedInsurance);
   }, [selectedInsurance]);
   useEffect(() => {
-    insuranceInput ? insuranceSet(parseInt(insuranceInput)) : insuranceSet(0);
+    insuranceInput
+      ? insuranceSet(parseInt(insuranceInput.replace(/,/g, "")))
+      : insuranceSet(0);
   }, [insuranceInput]);
 
   return (

@@ -34,7 +34,7 @@ function DependentsSection() {
     <View style={{ marginTop: 15, width: "90%" }}>
       <View style={styles.flexBox}>
         <Text style={{ fontSize: 20 }}>Number of dependents</Text>
-        <Pressable onPress={() => setDependentsModalVisible(true)}>
+        <Pressable onPress={() => setDependentsModalVisible(true)} hitSlop={10}>
           <Text style={{ fontSize: 17 }}>&#x2753;</Text>
         </Pressable>
       </View>
@@ -150,6 +150,7 @@ function DependentsSection() {
             <Pressable
               style={styles.buttonClose}
               onPress={() => setDependentsModalVisible(!dependentsModalVisible)}
+              hitSlop={10}
             >
               <Text style={styles.buttonCloseIcon}>&#x2715;</Text>
             </Pressable>
@@ -204,18 +205,15 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "center",
     position: "relative",
     backgroundColor: "rgba(0, 0, 0, 0.35)",
   },
   modalView: {
     height: "75%",
-    width: "100%",
     padding: 15,
     backgroundColor: "white",
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    alignItems: "flex-start",
   },
   buttonClose: {
     position: "absolute",

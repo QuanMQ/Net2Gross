@@ -37,6 +37,7 @@ function RegionSection() {
           onPress={() => {
             setRegionModalVisible(true);
           }}
+          hitSlop={10}
         >
           <Text style={{ fontSize: 17 }}>&#x2753;</Text>
         </Pressable>
@@ -86,6 +87,9 @@ function RegionSection() {
             <ScrollView>
               <View style={styles.modalView}>
                 <Text style={styles.modalTitle}>REGION</Text>
+                <View style={styles.divider}>
+                  <Text>&nbsp;</Text>
+                </View>
                 <Text style={styles.modalText}>
                   Base salary: {insertComma(baseSalary)} VND
                 </Text>
@@ -161,6 +165,7 @@ function RegionSection() {
                 <Pressable
                   style={styles.buttonClose}
                   onPress={() => setRegionModalVisible(!regionModalVisible)}
+                  hitSlop={10}
                 >
                   <Text style={styles.buttonCloseIcon}>&#x2715;</Text>
                 </Pressable>
@@ -177,20 +182,19 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "center",
     position: "relative",
     backgroundColor: "rgba(0, 0, 0, 0.35)",
   },
   modalView: {
+    marginTop: 15,
     padding: 15,
     backgroundColor: "white",
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    alignItems: "flex-start",
   },
   buttonClose: {
     position: "absolute",
-    right: 15,
+    left: 15,
     top: 10,
   },
   buttonCloseIcon: {
@@ -198,7 +202,6 @@ const styles = StyleSheet.create({
     color: "#bdbdbd",
   },
   modalTitle: {
-    marginBottom: 20,
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
@@ -208,6 +211,12 @@ const styles = StyleSheet.create({
   },
   modalTextBulletin: {
     paddingLeft: 15,
+  },
+  divider: {
+    height: 2,
+    backgroundColor: "#eaeaf0",
+    marginTop: 15,
+    marginBottom: 10,
   },
 });
 
