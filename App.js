@@ -6,6 +6,7 @@ import SalaryInputSection from "./components/SalaryInputSection";
 import DependentsSection from "./components/DependentsSection";
 import InsuranceSection from "./components/InsuranceSection";
 import RegionSection from "./components/RegionSection";
+import SalaryResults from "./components/SalaryResults";
 import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
                 <DependentsSection />
                 <InsuranceSection />
                 <RegionSection />
+                <SalaryResults />
               </View>
             </ScrollView>
           </SafeAreaView>
@@ -42,6 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 5,
     marginTop: 105,
+    marginBottom: 30,
     alignItems: "center",
     justifyContent: "center",
   },
