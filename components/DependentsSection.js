@@ -24,7 +24,7 @@ function DependentsSection() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMinusPlus("none");
-    }, 20);
+    }, 250);
     return () => {
       clearTimeout(timer);
     };

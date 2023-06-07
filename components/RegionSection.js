@@ -44,7 +44,7 @@ function RegionSection() {
       </View>
       <AutocompleteDropdown
         clearOnFocus={false}
-        closeOnBlur={true}
+        closeOnBlur={false}
         closeOnSubmit={false}
         direction="up"
         initialValue={

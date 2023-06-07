@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 
 const Header = () => {
   return (
     <View style={styles.header}>
+      <StatusBar hidden />
       <Text style={styles.text}>
         NET <Text style={styles.symbol}>&#x21CC;</Text> GROSS
       </Text>
@@ -13,10 +14,9 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    height: 75,
+    height: 60,
     width: "100%",
-    paddingTop: 26,
-    paddingBottom: 5,
+    paddingTop: 7,
     backgroundColor: "#003ba7",
     position: "absolute",
     top: 0,

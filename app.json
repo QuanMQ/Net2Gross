@@ -22,10 +22,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#09D766"
-      }
+      },
+      "package": "com.quanmq.Net2Gross"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "913bb21f-5904-4d8b-88de-7110c7cce4b8"
+      }
     }
   }
 }

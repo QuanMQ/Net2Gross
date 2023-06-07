@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     backgroundColor: "#fff",
     borderRadius: 5,
-    marginTop: 105,
+    marginTop: 90,
     marginBottom: 30,
     alignItems: "center",
     justifyContent: "center",

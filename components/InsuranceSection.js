@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   },
   pickerItem: {
     fontSize: 18,
+    backgroundColor: "white",
   },
   input: {
     borderColor: "#d9d9d9",
