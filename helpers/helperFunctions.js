@@ -1,4 +1,4 @@
-export const baseSalary = 1490000;
+export const baseSalary = 1800000;
 export const regionSalary = {
   region1: 4680000,
   region2: 4160000,
