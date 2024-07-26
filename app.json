@@ -2,8 +2,8 @@
   "expo": {
     "name": "Net 2 Gross",
     "slug": "Net2Gross",
-    "description": "A calculator app capable of converting net salary to gross salary and vice versa (In accordance with Decree No. 24/2023/ND-CP of the Vietnamese Government effective from July 1st, 2023)",
-    "version": "1.0.1",
+    "description": "A calculator app capable of converting net salary to gross salary and vice versa (In accordance with Decree No. 74/2024/ND-CP of the Vietnamese Government effective from July 1st, 2024)",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

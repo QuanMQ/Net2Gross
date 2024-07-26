@@ -1,9 +1,9 @@
-export const baseSalary = 1800000;
+export const baseSalary = 2340000;
 export const regionSalary = {
-  region1: 4680000,
-  region2: 4160000,
-  region3: 3640000,
-  region4: 3250000,
+  region1: 4960000,
+  region2: 4410000,
+  region3: 3860000,
+  region4: 3450000,
 };
 export const personalReductionRate = 11000000;
 export const dependentReductionRate = 4400000;
